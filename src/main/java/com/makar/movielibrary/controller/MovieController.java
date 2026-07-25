@@ -30,12 +30,14 @@ public class MovieController {
                                                      @RequestParam(required = false, defaultValue = "5") int pageSize,
                                                      @RequestParam(required = false, defaultValue = "movieTitle") String sortBy,
                                                      @RequestParam(required = false, defaultValue = "ASC") String sortDir,
-                                                     @RequestParam(required = false) String filter) {
+                                                     @RequestParam(required = false) String director,
+                                                     @RequestParam(required = false) String genre,
+                                                     @RequestParam(required = false) Integer year) {
         Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
         if (sortDir.equals("DESC")) {
             sort = Sort.by(Sort.Direction.DESC, sortBy);
         }
-        return ResponseEntity.ok(movieService.getAllMovies(PageRequest.of(pageNo, pageSize, sort),filter));
+        return ResponseEntity.ok(movieService.getAllMovies(PageRequest.of(pageNo, pageSize, sort), director,genre,year));
     }
 
 }
