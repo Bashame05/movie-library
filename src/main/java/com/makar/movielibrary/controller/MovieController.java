@@ -3,6 +3,7 @@ package com.makar.movielibrary.controller;
 import com.makar.movielibrary.model.Movie;
 import com.makar.movielibrary.service.MovieService;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +27,15 @@ public class MovieController {
     //so when used professionally some use pageNo-1 for cleaner 1 based indexing but make necessary conversions
     //and handle the pageNo input properly
     public ResponseEntity<List<Movie>> findAllMovies(@RequestParam(required = false, defaultValue = "0") int pageNo,
-                                                     @RequestParam(required = false, defaultValue = "5") int pageSize) {
-        return ResponseEntity.ok(movieService.getAllMovies(PageRequest.of(pageNo, pageSize)));
+                                                     @RequestParam(required = false, defaultValue = "5") int pageSize,
+                                                     @RequestParam(required = false, defaultValue = "movieTitle") String sortBy,
+                                                     @RequestParam(required = false, defaultValue = "ASC") String sortDir,
+                                                     @RequestParam(required = false) String filter) {
+        Sort sort = Sort.by(Sort.Direction.ASC, sortBy);
+        if (sortDir.equals("DESC")) {
+            sort = Sort.by(Sort.Direction.DESC, sortBy);
+        }
+        return ResponseEntity.ok(movieService.getAllMovies(PageRequest.of(pageNo, pageSize, sort),filter));
     }
 
 }

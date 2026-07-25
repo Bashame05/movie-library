@@ -3,6 +3,8 @@ package com.makar.movielibrary.repository;
 import com.makar.movielibrary.dto.MovieTitleCountResponseEntity;
 import com.makar.movielibrary.model.Movie;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.NativeQuery;
@@ -16,6 +18,8 @@ import java.util.Map;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
+
+    Page<Movie> findByMovieTitle(String movieTitle, Pageable pageable);
 
     @Query("SELECT new com.makar.movielibrary.dto.MovieTitleCountResponseEntity(m.movieDirector , count(m.movieTitle)) as total_movies from Movie m GROUP BY m.movieDirector")
     List<MovieTitleCountResponseEntity> findMovieCountByMovieDirector();

@@ -1,3 +1,3 @@
 ### GET request to fetch all movies
-GET http://localhost:6767/api/movies?pageNo=3&pageSize=5
+GET http://localhost:6767/api/movies?pageNo=0&pageSize=5&sortBy=movieYear&sortDir=DESC&filter=Memories Of Murder
 ###

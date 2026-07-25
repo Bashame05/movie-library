@@ -17,8 +17,13 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public List<Movie> getAllMovies(Pageable pageable) {
-        return movieRepository.findAll(pageable).getContent();
+    public List<Movie> getAllMovies(Pageable pageable,String filter) {
+        if (filter == null) {
+            return movieRepository.findAll(pageable).getContent();
+        }else{
+            return movieRepository.findByMovieTitle(filter,pageable).getContent();
+        }
+
     }
 
 }
