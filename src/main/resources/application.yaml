@@ -8,6 +8,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: DEBUG
 server:
   port: 6767
