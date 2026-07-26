@@ -8,10 +8,14 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-logging:
-  level:
-    com:
-      zaxxer:
-        hikari: DEBUG
+  security:
+    user:
+      name: "${APP_USER}"
+      password: "${APP_PASSWORD}"
+#logging:
+#  level:
+#    com:
+#      zaxxer:
+#        hikari: DEBUG
 server:
   port: 6767

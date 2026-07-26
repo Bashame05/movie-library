@@ -1,0 +1,10 @@
+### POST request to register user
+POST http://localhost:6767/api/users/register
+Content-Type: application/json
+
+{
+    "userName":"makar",
+    "userPassword":"makar"
+}
+
+###
