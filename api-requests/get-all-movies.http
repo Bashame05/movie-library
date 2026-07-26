@@ -1,4 +1,4 @@
 ### GET request to fetch all movies
 GET http://localhost:6767/api/movies?pageNo=0&pageSize=5&sortBy=movieYear&sortDir=DESC&director=Bong Joon-ho&year=2019
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYWthciIsImlhdCI6MTc4NTA4Mzc3OSwiZXhwIjoxNzg1MTE5Nzc5fQ.gNcA7dKE6Lch3fy7N46R9TYjAE-Zk7An4MVZOzFkqSo
+Authorization: Bearer ### generated jwt token ###
 ###
