@@ -3,6 +3,7 @@ package com.makar.movielibrary.service;
 
 import com.makar.movielibrary.model.User;
 import com.makar.movielibrary.repository.UserRepository;
+import com.makar.movielibrary.security.JWTService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,10 +17,16 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
+    private final JWTService jwtService;
+
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder,
+                       AuthenticationManager authenticationManager,
+                       JWTService jwtService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
     }
 
     public User registerUser(User user) {
@@ -29,11 +36,11 @@ public class UserService {
 
     public String userLogin(User user) {
 
-        try{
+        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(user.getUserName(), user.getUserPassword()));
-            return "USER AUTHENTICATED";
-        }catch(BadCredentialsException e){
+            return jwtService.generateToken(user.getUserName());
+        } catch (BadCredentialsException e) {
             return e.getMessage();
         }
 

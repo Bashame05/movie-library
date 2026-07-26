@@ -25,9 +25,9 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public String loginUser(@RequestBody User user) {
+    public ResponseEntity<String> loginUser(@RequestBody User user) {
 
-        return userService.userLogin(user);
+        return ResponseEntity.ok(userService.userLogin(user));
 
     }
 
