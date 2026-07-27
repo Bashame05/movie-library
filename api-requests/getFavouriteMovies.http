@@ -1,0 +1,5 @@
+### GET request to example server
+GET http://localhost:6767/api/users/favourite
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHdldGEiLCJpYXQiOjE3ODUxNTQ2MTAsImV4cCI6MTc4NTE5MDYxMH0.EXKe2ZtMa5oxcN3LcraE0op3tqP1dA_I3vwutgqZldc
+
+###

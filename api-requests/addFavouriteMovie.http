@@ -1,0 +1,7 @@
+### GET request to example server
+POST http://localhost:6767/api/users/favourite
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaHdldGEiLCJpYXQiOjE3ODUxNTM1ODIsImV4cCI6MTc4NTE4OTU4Mn0.Z6mImNfOqTvO-VkCshyKHbIQTxlIkkoe1lc9fYqahMc
+Content-Type: application/json
+
+7
+###

@@ -7,6 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.Year;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @NoArgsConstructor
@@ -24,6 +26,9 @@ public class Movie {
     private Year movieYear;
     private String movieGenre;
     private String movieDirector;
+
+    @ManyToMany(mappedBy = "favouriteMovies")
+    private Set<User> users = new HashSet<>();
 
 
 }

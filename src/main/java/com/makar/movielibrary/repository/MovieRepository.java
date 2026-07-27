@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.time.Year;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> , JpaSpecificationExecutor<Movie> {
@@ -51,4 +52,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> , JpaSpec
     @Modifying
     @NativeQuery("UPDATE movies set movie_year = ?1 where movie_title = ?2")
     int updateMovieYearByMovieName(Year year , String movieName);
+
+    Optional<Movie> findByMovieId(Integer movieId);
 }
