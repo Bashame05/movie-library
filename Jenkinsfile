@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: ''https://github.com/Bashame05/movie-library.git
+                    url: 'https://github.com/Bashame05/movie-library.git'
             }
         }
 
